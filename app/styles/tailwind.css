@@ -1,6 +1,36 @@
 /**
  * Configure Tailwind v4 in this file using CSS variables and directives:
- * https://tailwindcss.com/blog/tailwindcss-v4-alpha#css-first-configuration 
+ * https://tailwindcss.com/blog/tailwindcss-v4-alpha#css-first-configuration
  */
-
 @import 'tailwindcss';
+
+@layer base {
+    @font-face {
+      font-family: Inter;
+      font-weight: 400;
+      src: url(/font/Inter-VariableFont_opsz_wght.ttf) format("truetype");
+    }
+    @font-face {
+      font-family: Inter;
+      font-weight: 500;
+      src: url(/font/Inter-VariableFont_opsz_wght.ttf) format("truetype");
+    }
+
+    @font-face {
+        font-family: Sankofa;
+        font-weight: 500;
+        src: url(/font/SankofaDisplay-Regular.ttf) format("truetype");
+    }
+}
+
+@theme {
+    --font-family-display: "Sankofa";
+    --color-*: initial;
+
+    --color-gray-100: #f1f5f9;
+    --color-gray-200: #e2e8f0;
+    /* ... */
+    --color-green-800: #3f6212;
+    --color-green-900: #365314;
+    --color-green-950: #1a2e05;
+}

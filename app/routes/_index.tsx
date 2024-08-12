@@ -1,7 +1,14 @@
+import { useState } from 'react';
 import {defer, type LoaderFunctionArgs} from '@shopify/remix-oxygen';
 import {Await, useLoaderData, Link, type MetaFunction} from '@remix-run/react';
 import {Suspense} from 'react';
 import {Image, Money} from '@shopify/hydrogen';
+
+import { Dialog, DialogBackdrop, DialogPanel, DialogTitle } from '@headlessui/react';
+import { CheckIcon } from '@heroicons/react/24/outline';
+import { Accordion, AccordionItem as Item } from "@szhsin/react-accordion";
+import chevron from "../assets/chevron.svg";
+
 import type {
   FeaturedCollectionFragment,
   RecommendedProductsQuery,
@@ -55,10 +62,129 @@ function loadDeferredData({context}: LoaderFunctionArgs) {
   };
 }
 
+
+
 export default function Homepage() {
   const data = useLoaderData<typeof loader>();
+  const [open, setOpen] = useState(false);
+
+
+  /**
+  * @type {React.ExoticComponent<import('@szhsin/react-accordion').AccordionItemProps>}
+  */
+  const AccordionItem = ({ header, ...rest }) => (
+    <Item
+      {...rest}
+      header={({ state: { isEnter } }) => (
+        <>
+          {header}
+          <img
+            className={`ml-auto transition-transform duration-200 ease-out ${
+              isEnter && "rotate-180"
+            }`}
+            src={chevron}
+            alt="Chevron"
+          />
+        </>
+      )}
+      className="border-b"
+      buttonProps={{
+        className: ({ isEnter }) =>
+          `flex w-full p-4 text-left hover:bg-slate-100 ${
+            isEnter && "bg-slate-200"
+          }`
+      }}
+      contentProps={{
+        className: "transition-height duration-200 ease-out"
+      }}
+      panelProps={{ className: "p-4" }}
+    />
+  );
+
   return (
     <div className="home">
+    <button
+        type="button"
+        className="rounded bg-indigo-600 px-2 py-1 text-xs font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+        onClick={() => setOpen(true)}
+      >
+        Button text
+      </button>
+
+
+      <p className="font-display">asdasdasd</p>
+
+
+      <button className="h-[57px] px-6 py-4 bg-[#0098ee] rounded-xl justify-center items-center gap-2.5 inline-flex">
+        <div className="w-5 h-5 relative"></div>
+        <div className="text-white text-lg font-medium font-['Inter'] leading-[25.20px]">Újrapróbálom</div>
+      </button>
+
+
+      <div className="mx-2 my-4 border-t">
+      {/* `transitionTimeout` prop should be equal to the transition duration in CSS */}
+      <Accordion transition transitionTimeout={200}>
+        <AccordionItem header="What is Lorem Ipsum?" initialEntered>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        </AccordionItem>
+
+        <AccordionItem header="Where does it come from?">
+          Quisque eget luctus mi, vehicula mollis lorem. Proin fringilla vel
+          erat quis sodales. Nam ex enim, eleifend venenatis lectus vitae.
+        </AccordionItem>
+
+        <AccordionItem header="Why do we use it?">
+          Suspendisse massa risus, pretium id interdum in, dictum sit amet ante.
+          Fusce vulputate purus sed tempus feugiat.
+        </AccordionItem>
+      </Accordion>
+    </div>
+
+
+    <Dialog open={open} onClose={setOpen} className="relative z-10">
+      <DialogBackdrop
+        transition
+        className="fixed inset-0 bg-gray-500/75 transition-opacity data-[closed]:opacity-0 data-[enter]:duration-300 data-[leave]:duration-200 data-[enter]:ease-out data-[leave]:ease-in"
+      />
+
+      <div className="fixed inset-0 z-10 w-screen overflow-y-auto">
+        <div className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
+          <DialogPanel
+            transition
+            className="relative transform overflow-hidden rounded-lg bg-white px-4 pb-4 pt-5 text-left shadow-xl transition-all data-[closed]:translate-y-4 data-[closed]:opacity-0 data-[enter]:duration-300 data-[leave]:duration-200 data-[enter]:ease-out data-[leave]:ease-in sm:my-8 sm:w-full sm:max-w-sm sm:p-6 data-[closed]:sm:translate-y-0 data-[closed]:sm:scale-95"
+          >
+            <div>
+              <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-green-100">
+                <CheckIcon aria-hidden="true" className="h-6 w-6 text-green-600" />
+              </div>
+              <div className="mt-3 text-center sm:mt-5">
+                <DialogTitle as="h3" className="text-base font-semibold leading-6 text-gray-900">
+                  Payment successful
+                </DialogTitle>
+                <div className="mt-2">
+                  <p className="text-sm text-gray-500">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur amet labore.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div className="mt-5 sm:mt-6">
+              <button
+                type="button"
+                onClick={() => setOpen(false)}
+                className="inline-flex w-full justify-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+              >
+                Go back to dashboard
+              </button>
+            </div>
+          </DialogPanel>
+        </div>
+      </div>
+    </Dialog>
+
+
+
       <FeaturedCollection collection={data.featuredCollection} />
       <RecommendedProducts products={data.recommendedProducts} />
     </div>
