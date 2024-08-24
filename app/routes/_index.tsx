@@ -1,13 +1,17 @@
-import { useState } from 'react';
+import {useState, Suspense} from 'react';
 import {defer, type LoaderFunctionArgs} from '@shopify/remix-oxygen';
 import {Await, useLoaderData, Link, type MetaFunction} from '@remix-run/react';
-import {Suspense} from 'react';
 import {Image, Money} from '@shopify/hydrogen';
 
-import { Dialog, DialogBackdrop, DialogPanel, DialogTitle } from '@headlessui/react';
-import { CheckIcon } from '@heroicons/react/24/outline';
-import { Accordion, AccordionItem as Item } from "@szhsin/react-accordion";
-import chevron from "../assets/chevron.svg";
+import {
+  Dialog,
+  DialogBackdrop,
+  DialogPanel,
+  DialogTitle,
+} from '@headlessui/react';
+import {CheckIcon} from '@heroicons/react/24/outline';
+import {Accordion, AccordionItem as Item} from '@szhsin/react-accordion';
+import chevron from '../assets/chevron.svg';
 
 import type {
   FeaturedCollectionFragment,
@@ -103,19 +107,9 @@ export default function Homepage() {
 
   return (
     <div className="home">
-    <button
-        type="button"
-        className="rounded bg-indigo-600 px-2 py-1 text-xs font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-        onClick={() => setOpen(true)}
-      >
-        Button text
-      </button>
 
 
-      <p className="font-display">asdasdasd</p>
-
-
-      <button className="h-[57px] px-6 py-4 bg-[#0098ee] rounded-xl justify-center items-center gap-2.5 inline-flex">
+      <button className="h-[57px] px-6 py-4 bg-[#0098ee] rounded-xl justify-center items-center gap-2.5 inline-flex" onClick={() => setOpen(true)}>
         <div className="w-5 h-5 relative"></div>
         <div className="text-white text-lg font-medium font-['Inter'] leading-[25.20px]">Újrapróbálom</div>
       </button>

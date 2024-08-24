@@ -229,6 +229,18 @@ const PRODUCT_VARIANT_FRAGMENT = `#graphql
       amount
       currencyCode
     }
+    print_height: metafield(
+        namespace: "trailpix"
+        key: "print_height"
+    ) {
+        value
+    }
+    print_width: metafield(
+        namespace: "trailpix"
+        key: "print_width"
+    ) {
+        value
+    }
   }
 ` as const;
 

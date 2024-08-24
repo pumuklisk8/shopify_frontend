@@ -21,16 +21,130 @@
         font-weight: 500;
         src: url(/font/SankofaDisplay-Regular.ttf) format("truetype");
     }
+
+    h1 {
+      @apply text-default-black text-7xl! font-normal! leading-[86.4px]! not-italic!
+    }
+
+    h1.medium {
+      @apply text-default-black text-7xl! font-medium! leading-[86.4px]! not-italic!
+    }
+
+    h1.large {
+      @apply text-default-black text-[62px]! font-normal! leading-[74.4px]! not-italic!
+    }
+
+    h1.large-medium {
+      @apply text-default-black text-[62px]! font-medium! leading-[74.4px]! not-italic!
+    }
+
+    h1.small {
+      @apply text-default-black text-[52px]! font-normal! leading-[57.2px]! not-italic!
+    }
+
+    h1.small-medium {
+      @apply text-default-black text-[52px]! font-medium! leading-[57.2px]! not-italic!
+    }
+
+    h2.huge {
+      @apply text-default-black text-[40px]! font-normal! leading-[48px]! not-italic!
+    }
+
+    h2.huge-medium {
+      @apply text-default-black text-[40px]! font-medium! leading-[48px]! not-italic!
+    }
+
+    h2.large {
+      @apply text-default-black text-[32px]! font-normal! leading-[38.4px]! not-italic!
+    }
+
+    h2.large-medium {
+      @apply text-default-black text-[32px]! font-medium! leading-[38.4px]! not-italic!
+    }
+
+    h2.small {
+      @apply text-default-black text-[20px]! font-normal! leading-[24px]! not-italic!
+    }
+
+    h2.small-medium {
+      @apply text-default-black text-[20px]! font-medium! leading-[24px]! not-italic!
+    }
+
+    p.large {
+      @apply text-default-black text-[18px]! font-normal! leading-[25.2px]! not-italic!
+    }
+
+    p.large-medium {
+      @apply text-default-black text-[18px]! font-medium! leading-[25.2px]! not-italic!
+    }
+
+    p.medium {
+      @apply text-default-black text-[16px]! font-normal! leading-[22.4px]! not-italic!
+    }
+
+    p.medium-medium {
+      @apply text-default-black text-[16px]! font-medium! leading-[22.4px]! not-italic!
+    }
+
+    p.small {
+      @apply text-default-black text-[14px]! font-normal! leading-[19.6px]! not-italic!
+    }
+
+    .body-text-small-medium {
+      @apply text-default-black text-[14px]! font-medium! leading-[19.6px]! not-italic!
+    }
+
+    p.small-medium {
+      @apply text-default-black text-[14px]! font-medium! leading-[19.6px]! not-italic!
+    }
+
+    .body-text-small-medium {
+      @apply text-default-black text-[14px]! font-medium! leading-[19.6px]! not-italic!
+    }
+
+    p.medium-semibold {
+      @apply text-default-black text-[16px]! font-semibold! leading-[22.4px]! not-italic!
+    }
+
+    .body-text-medium-semibold {
+      @apply text-default-black text-[16px]! font-semibold! leading-[22.4px]! not-italic!
+    }
+
+    p.caption {
+      @apply text-default-black text-[12px]! font-normal! leading-[14.4px]! not-italic! uppercase!
+    }
+
+    p.caption-medium {
+      @apply text-default-black text-[12px]! font-medium! leading-[14.4px]! not-italic! uppercase!
+    }
 }
 
 @theme {
-    --font-family-display: "Sankofa";
+    --font-family-display: "Inter";
     --color-*: initial;
+    --color-default-black: #0E0E0E;
+
 
     --color-gray-100: #f1f5f9;
     --color-gray-200: #e2e8f0;
-    /* ... */
     --color-green-800: #3f6212;
     --color-green-900: #365314;
     --color-green-950: #1a2e05;
+
+    --color-50: #052638;
+    --color-foundation-blue-800: #123142;
+    --color-foundation-blue-700: #324D5C;
+    --color-foundation-blue-600: #3F5866;
+    --color-foundation-blue-500: #5A707C;
+    --color-foundation-blue-300: #788A94;
+    --color-foundation-blue-200: #87979F;
+    --color-foundation-blue-100: #96A4AB;
+    --color-foundation-blue-50: #D6DBDD;
+    --color-foundation-blue-25: #ECEFF1;
+
+    --color-primary: #0099EF;
+    --color-primary-hover: #0082C9;
+    --color-primary-active: #146794;
+
+    --color-border-gray: rgba(0, 0, 0, 0.12);
 }
